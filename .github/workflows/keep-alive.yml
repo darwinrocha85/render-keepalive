@@ -1,0 +1,17 @@
+name: Keep-alive Render backends
+
+on:
+  schedule:
+    - cron: '*/15 6-17 * * 1-5'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping spacecraftSystem
+        run: curl --max-time 90 --retry 2 --retry-delay 5 -sS -o /dev/null -w "spacecraftSystem: %{http_code}\n" https://spacecraftsystem.onrender.com/ || true
+      - name: Ping BankIn
+        run: curl --max-time 90 --retry 2 --retry-delay 5 -sS -o /dev/null -w "BankIn: %{http_code}\n" https://bankinback.onrender.com/ || true
+      - name: Ping spacecraft-taller-backend
+        run: curl --max-time 90 --retry 2 --retry-delay 5 -sS -o /dev/null -w "taller: %{http_code}\n" https://spacecraft-taller-backend.onrender.com/ || true
