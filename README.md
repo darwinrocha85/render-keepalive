@@ -1,7 +1,7 @@
 # render-keepalive
 
 Cron que mantiene despiertos los backends en Render (plan Free): un GitHub Action hace
-`curl` cada 15 min (lun–vie 6–17h) para evitar cold-starts en las demos.
+`curl` cada 10 min (lun–vie 6–17h) para evitar cold-starts en las demos.
 
 ## Qué cubre
 - `spacecraftsystem.onrender.com`
